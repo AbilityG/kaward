@@ -11,7 +11,6 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
- * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
@@ -20,6 +19,25 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property string $company_name
+ * @property string $ur_company_name
+ * @property string $city
+ * @property string $address
+ * @property string $office_phone_1
+ * @property string $office_phone_2
+ * @property string $office_phone_3
+ * @property string $corporate_email
+ * @property string $site
+ * @property string $name
+ * @property string $surname
+ * @property string $patronymic
+ * @property string $position
+ * @property string $user_phone
+ * @property string $alternate_email
+ * @property integer $year
+ * @property string $year_link
+ * @property string $company_description
+ * @property string $portfolio_link
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -80,6 +98,17 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * Finds user by email
+     *
+     * @param string $email
+     * @return static|null
+     */
+    public static function findByEmail($email)
+    {
+        return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
