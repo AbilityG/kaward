@@ -38,6 +38,17 @@ use yii\web\IdentityInterface;
  * @property string $year_link
  * @property string $company_description
  * @property string $portfolio_link
+ * @property boolean $agency_full
+ * @property boolean $design_studio
+ * @property boolean $digital_agency
+ * @property boolean $mobile_apps
+ * @property boolean $projects_support
+ * @property boolean $e_commerce
+ * @property boolean $seo
+ * @property boolean $smm
+ * @property boolean $tech_solutions
+ * @property boolean $software
+ * @property boolean $system_integrator
  */
 class User extends ActiveRecord implements IdentityInterface
 {

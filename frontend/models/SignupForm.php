@@ -31,6 +31,17 @@ class SignupForm extends Model
     public $year_link;
     public $company_description;
     public $portfolio_link;
+    public $agency_full;
+    public $design_studio;
+    public $digital_agency;
+    public $mobile_apps;
+    public $projects_support;
+    public $e_commerce;
+    public $seo;
+    public $smm;
+    public $tech_solutions;
+    public $software;
+    public $system_integrator;
 
     /**
      * @inheritdoc
@@ -39,11 +50,13 @@ class SignupForm extends Model
     {
         return [
             [['email', 'company_name', 'ur_company_name', 'address', 'site', 'name', 'surname', 'patronymic', 'position', 'alternate_email', 'year_link', 'company_description', 'portfolio_link'], 'filter', 'filter' => 'trim'],
-            [['email', 'company_name', 'password', 'site', 'name', 'surname', 'position', 'city', 'office_phone_1', 'corporate_email', 'alternate_email', 'year', 'company_description', 'portfolio_link'], 'required', 'message' => 'Поле обязательно для заполнения.'],
+            [['email', 'company_name', 'password', 'site', 'name', 'surname', 'position', 'user_phone', 'city', 'office_phone_1', 'corporate_email', 'alternate_email', 'year', 'company_description', 'portfolio_link'], 'required', 'message' => 'Поле обязательно для заполнения.'],
 
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Этот емейл уже зарегистрирован.'],
+
+            [['ur_company_name', 'address', 'office_phone_2', 'office_phone_3', 'patronymic', 'user_phone', 'year_link'], 'default', 'value' => ''],
 
             ['company_name', 'string', 'max' => 255],
 
@@ -111,6 +124,17 @@ class SignupForm extends Model
         $user->year_link = $this->year_link;
         $user->company_description = $this->company_description;
         $user->portfolio_link = $this->portfolio_link;
+        $user->agency_full = $this->agency_full;
+        $user->design_studio = $this->design_studio;
+        $user->digital_agency = $this->digital_agency;
+        $user->mobile_apps = $this->mobile_apps;
+        $user->projects_support = $this->projects_support;
+        $user->e_commerce = $this->e_commerce;
+        $user->seo = $this->seo;
+        $user->smm = $this->smm;
+        $user->tech_solutions = $this->tech_solutions;
+        $user->software = $this->software;
+        $user->system_integrator = $this->system_integrator;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         

@@ -62,6 +62,15 @@ $this->title = 'Signup';
             ]
         ])->textInput(['class' => 'default medium'])->label( 'Основной емейл', ['class' => 'text-label'])->error(['class' => 'under-input small-desc error-desc']); ?>
         <p class="small-desc under-input">Основной емейл послужит также логином для входа. Необходимо ввести рабочий емейл ответственного лица компании или представителей руководящего состава</p>
+        <?= $form->field($model, 'password', [
+            'template' => '{label}{input}{error}',
+            'errorOptions' => [
+                'tag' => 'p'
+            ],
+            'options' => [
+                'class' => 'input-group'
+            ]
+        ])->passwordInput(['class' => 'default medium'])->label( 'Пароль', ['class' => 'text-label'])->error(['class' => 'under-input small-desc error-desc']); ?>
     </div>
     <div class="reg-block reg-block__grey">
         <h2>Головной офис компании</h2>
@@ -239,7 +248,7 @@ $this->title = 'Signup';
             'options' => [
                 'class' => 'input-group'
             ]
-        ])->textInput(['class' => 'default small phone-number'])->label( 'Номер мобильного', ['class' => 'text-label'])->error(['class' => 'under-input small-desc error-desc']); ?>
+        ])->widget(\yii\widgets\MaskedInput::className(), ['mask' => '+7 (999)-999-99-99'])->textInput(['class' => 'default small phone-number'])->label( 'Номер мобильного', ['class' => 'text-label'])->error(['class' => 'under-input small-desc error-desc']); ?>
         <?= $form->field($model, 'alternate_email', [
             'template' => '{label}{input}{error}',
             'errorOptions' => [
@@ -349,47 +358,79 @@ $this->title = 'Signup';
     <div class="reg-block positioning">
         <h3>Позиционирование</h3>
         <p class="small-desc">Укажите один или несколько пунктов, раскрывающих, как компания представляет себя на рынке</p>
-        <div class="checkbox-group">
-            <input class="checkbox" id="positioning-1" type="checkbox" name="site">
-            <label class="for-checkbox" for="positioning-1">Агентство полного цикла</label>
-        </div>
-        <div class="checkbox-group">
-            <input class="checkbox" id="positioning-2" type="checkbox" name="site">
-            <label class="for-checkbox" for="positioning-2">Дизайн-студия</label>
-        </div>
-        <div class="checkbox-group">
-            <input class="checkbox" id="positioning-3" type="checkbox" name="site">
-            <label class="for-checkbox" for="positioning-3">Диджитал-агентство</label>
-        </div>
-        <div class="checkbox-group">
-            <input class="checkbox" id="positioning-4" type="checkbox" name="site">
-            <label class="for-checkbox" for="positioning-4">Разработчик мобильных приложений</label>
-        </div>
-        <div class="checkbox-group">
-            <input class="checkbox" id="positioning-5" type="checkbox" name="site">
-            <label class="for-checkbox" for="positioning-5">Поддержка проектов</label>
-        </div>
-        <?= $form->field($model, 'portfolio_link', [//NEED TO FIX
+        <?= $form->field($model, 'agency_full', [
             'template' => '{input}{label}',
             'options' => [
                 'class' => 'checkbox-group'
             ]
-        ])->checkbox(['class' => 'checkbox'], false)->label( 'Ссылка на портфолио', ['class' => 'for-checkbox']); ?>
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'Агентство полного цикла', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'design_studio', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'Дизайн-студия', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'digital_agency', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'Диджитал-агентство', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'mobile_apps', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'Разработчик мобильных приложений', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'projects_support', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'Поддержка проектов', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'e_commerce', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'Разработчик e-commerce', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'seo', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'SEO-студия/агентство', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'smm', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'SMM-студия/агентство', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'software', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'Разработчик ПО', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'tech_solutions', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'Разработчик технологических решений', ['class' => 'for-checkbox']); ?>
+        <?= $form->field($model, 'system_integrator', [
+            'template' => '{input}{label}',
+            'options' => [
+                'class' => 'checkbox-group'
+            ]
+        ])->checkbox(['class' => 'checkbox'], false)->label( 'Системный интегратор', ['class' => 'for-checkbox']); ?>
         <div class="checkbox-group margin-50">
             <div class="oferta">
                 <input class="checkbox offer-checking" id="positioning-6" type="checkbox" name="site">
                 <label class="for-checkbox" for="positioning-6">Согласен с <a href="#">Офертой</a> и прочей ерундой</label>
             </div>
-            <button class="submit disabled" disabled>Зарегистрироваться</button>
+            <button type="submit" name="signup-button" class="submit disabled" disabled>Зарегистрироваться</button>
         </div>
-    </div>
-    <?//= $form->field($model, 'username')->textInput() ?>
-
-
-    <?= $form->field($model, 'password')->passwordInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

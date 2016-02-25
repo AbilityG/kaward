@@ -80,13 +80,13 @@ AppAsset::register($this);
             if ( phoneInputs.length <= 1 ) {
                 i = 2;
             } else {
-                i = 3
+                i = 3;
             }
             $('.add-phone-input').append('<input type="text" id="signupform-office_phone_'+ i +'" class="default small added" name="SignupForm[office_phone_'+ i +']">');
             // Input mask
             var inputmask_a55dd1dc = {"mask":"+7 (999)-999-99-99"};
-            $("#signupform-office_phone_2").inputmask(inputmask_a55dd1dc);
-            $("#signupform-office_phone_3").inputmask(inputmask_a55dd1dc);
+            $('#signupform-office_phone_2').inputmask(inputmask_a55dd1dc);
+            $('#signupform-office_phone_3').inputmask(inputmask_a55dd1dc);
         }
     });
 
